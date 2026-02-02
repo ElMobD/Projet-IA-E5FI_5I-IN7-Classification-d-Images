@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Créer le détecteur ORB
-orb = cv2.ORB_create(nfeatures=5000)
+orb = cv2.ORB_create()
 
 # IMPORTANT : Remplacez par le chemin de VOTRE image
 # Exemples possibles :
