@@ -4,11 +4,13 @@ import os
 from scipy.cluster.vq import vq
 import random
 
+NBR_WORDS = 200  # Nombre de mots visuels
+
 # Charger le vocabulaire
-vocabulary = np.load("vocabulary.npy")
+vocabulary = np.load("outputs/vocabulary.npy")
 print(f"Vocabulaire chargé : {vocabulary.shape}")
 
-k = 200  # Nombre de mots visuels
+k = NBR_WORDS  # Nombre de mots visuels
 
 # TRAINING SET
 train_path = "dataset/training_set"

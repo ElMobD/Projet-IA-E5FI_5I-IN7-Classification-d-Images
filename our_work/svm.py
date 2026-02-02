@@ -9,10 +9,10 @@ import joblib
 # ===== Étape 1 : Charger les données =====
 print("Chargement des données...")
 
-X_train = np.load("X_train.npy")
-y_train = np.load("y_train.npy")
-X_test = np.load("X_test.npy")
-y_test = np.load("y_test.npy")
+X_train = np.load("outputs/X_train.npy")
+y_train = np.load("outputs/y_train.npy")
+X_test = np.load("outputs/X_test.npy")
+y_test = np.load("outputs/y_test.npy")
 
 print(f"X_train shape : {X_train.shape}")
 print(f"y_train shape : {y_train.shape}")

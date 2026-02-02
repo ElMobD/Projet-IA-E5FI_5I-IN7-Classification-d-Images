@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
 import os
-from scipy.cluster.vq import kmeans
+from sklearn.cluster import KMeans
+from tqdm import tqdm
+
+NBR_CLUSTER = 200  # Nombre de clusters pour K-Means
 
 train_path = "dataset/training_set"
 image_paths = []
@@ -22,7 +25,8 @@ orb = cv2.ORB_create()
 
 des_list = []
 
-for image_path in image_paths:
+print("Extraction des descripteurs...")
+for image_path in tqdm(image_paths, desc="Images traitées"):
     # Charger l'image
     img = cv2.imread(image_path)
     
@@ -50,14 +54,15 @@ for des in des_list[1:]:
 
 descriptors_float = descriptors.astype(float)
 
-k = 200 # Nombre de clusters
+k = NBR_CLUSTER  # Nombre de clusters
 
-print("Création du vocabulaire avec K-Means... (cela peut prendre du temps)")
-vocabulary, variance = kmeans(descriptors_float, k, 1)
+print("\nCréation du vocabulaire avec K-Means...")
+kmeans_model = KMeans(n_clusters=k, verbose=1, n_init=10)
+kmeans_model.fit(descriptors_float)
+vocabulary = kmeans_model.cluster_centers_
 
-print(f"Vocabulaire créé ! Forme : {vocabulary.shape}")
-print(f"Variance : {variance}")
+print(f"\nVocabulaire créé ! Forme : {vocabulary.shape}")
 
-#Optionnel car on sais jamais si on va en avoir besoin plus tard
-np.save("vocabulary.npy", vocabulary)
-print("Vocabulaire sauvegardé dans vocabulary.npy")
+# Optionnel car on sais jamais si on va en avoir besoin plus tard
+np.save("outputs/vocabulary.npy", vocabulary)
+print("Vocabulaire sauvegardé dans outputs/vocabulary.npy")
