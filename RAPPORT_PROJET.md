@@ -208,13 +208,26 @@ orb = cv2.ORB_create(nfeatures=1000)  # Au lieu de 500
 
 ## 📈 Comparaison avec le code du prof
 
-| Aspect | Notre implémentation | Code du prof |
-|--------|----------------------|--------------|
-| **Modulaire** | ✅ Divisé en 4 phases | ❌ Tout dans 1 fichier |
+### Différences de contexte
+
+| Aspect | Code du prof | Notre implémentation |
+|--------|--------------|----------------------|
+| **Images d'entraînement** | 180 images | 8000 images |
+| **Images de test** | 40 images | 2000 images |
+| **Accuracy obtenue** | 65% | 71% |
+
+⚠️ **Important** : Les accuracies **ne sont pas comparables** car les datasets sont très différents.
+
+### Améliorations de notre implémentation
+
+| Aspect | Notre code | Code du prof |
+|--------|-----------|--------------|
+| **Architecture** | ✅ Modulaire (4 fichiers) | ⚠️ Monolithique (1 fichier) |
 | **Lisibilité** | ✅ Très clair | ⚠️ Dense |
-| **Réutilisable** | ✅ Oui | ⚠️ Difficile |
-| **Accuracy** | 71% | 65% (sur subset) |
-| **Features** | ✅ Barre de progression | ❌ Non |
+| **Réutilisabilité** | ✅ Facile de modifier | ⚠️ Difficile |
+| **Progression** | ✅ Barre tqdm | ❌ Non |
+| **Documentation** | ✅ Détaillée | ⚠️ Minimale |
+| **Dataset** | ✅ Complet (8000 images) | ⚠️ Subset (220 images) |
 
 ---
 
