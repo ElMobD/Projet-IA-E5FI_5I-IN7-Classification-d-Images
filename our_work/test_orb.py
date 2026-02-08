@@ -9,7 +9,7 @@ orb = cv2.ORB_create()
 # Exemples possibles :
 # im = cv2.imread("dataset/training_set/dogs/dog.1.jpg")
 # im = cv2.imread("mon_image.jpg")
-im = cv2.imread("dataset/training_set/dogs/dog.1.jpg")
+im = cv2.imread("dataset/training_set/dogs/dog.4.jpg")
 
 # Vérifier que l'image est bien chargée
 if im is None:
